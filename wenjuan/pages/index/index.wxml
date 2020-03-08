@@ -1,0 +1,52 @@
+、
+<!--index.wxml-->
+<view class="container">
+  <form bindsubmit="submit">
+    <view>
+      <text>姓名： </text>
+      <input name="name" value = "{{name}}" required></input>
+    </view>
+    <view>
+      <text>性别： </text>
+      <radio-group name="gender" required>
+        <label wx:for="{{gender}}" wx:key="value">
+          <radio value="{{item.value}}" checked="{{item.checked}}"  />
+          {{item.name}}  
+        </label>
+        <label><radio value="1"/>女</label>
+      </radio-group>
+    </view>
+    <view>
+      <text>专业技能</text>
+      <checkbox-group name="skills">
+        <label wx:for="{{skills}}" wx:key="value">
+          <checkbox value="{{item.value}}" checked="{{item.checked}}"/>
+            {{item.name}}
+        </label>
+        <label><checkbox value="html" checked/>Html</label>
+        <label><checkbox value="css" checked/>css</label>
+        <label><checkbox value="js" />js</label>
+        <label><checkbox value="ps" />ps</label>
+      </checkbox-group>
+    </view>
+    <view>
+      <text>您的意见</text>
+      <textarea name="opinion" value="{{opinion}}"></textarea>
+    </view>
+    <button form-type="submit">提交</button>
+  </form>
+</view>
+
+
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>
